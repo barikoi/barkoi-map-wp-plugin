@@ -1,0 +1,78 @@
+
+
+/* Flex container for map and table */
+.map-table-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.input-container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Styling for the map */
+#map {
+  width: 80vw;
+  height: 80vh;
+  border: 2px solid #333;
+  border-radius: 8px;
+  margin-right: 20px;
+  background-color: #e0e0e0; /* Placeholder for map */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+  z-index: 10; /* Ensure it’s on top of the map */
+}
+
+/* Custom table styles */
+.table-container {
+  width: 50%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  background-color: #333;
+  color: #fff;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#locationInput{
+  width: 45%;
+}
