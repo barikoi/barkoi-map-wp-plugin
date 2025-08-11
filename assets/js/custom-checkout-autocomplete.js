@@ -28,7 +28,7 @@ jQuery(function ($) {
     function updateSuggestionsDropdown(suggestions, type) {
         const dropdown = $(`#${type}-address-suggestions`);
         dropdown.empty();
-        $('#shipping-address-suggestions').show();
+        $(`#${type}-address-suggestions`).show();
         suggestions.forEach(address => {
             $('<div>')
                 .addClass('suggestion-item')
