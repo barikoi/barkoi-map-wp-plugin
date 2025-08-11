@@ -5,6 +5,8 @@ jQuery(function ($) {
     let centerlngLat = [90.4125, 23.8103];
 
     bkoigl.accessToken = bkoimadhk_reverseGeoConfig.apiKey;
+    
+    console.log('Reverse Geo Config:', bkoimadhk_reverseGeoConfig);
 
     function getAddressByreverseGEO(lng, lat, type) {
         const url = "https://barikoi.xyz/v2/api/search/reverse/geocode?api_key=" + bkoimadhk_reverseGeoConfig.apiKey + "&longitude=" + lng + "&latitude=" + lat + "&district=true&post_code=true";
@@ -24,10 +26,13 @@ jQuery(function ($) {
             const lngLat = [lng, lat];
 
             const markerIcon = document.createElement("img");
-            markerIcon.src = bkoimadhk_autocompleteConfig.default_marker_icon;
+            markerIcon.src = bkoimadhk_reverseGeoConfig.default_marker_icon;
             markerIcon.style.width = "35px";
             markerIcon.style.height = "35px";
             markerIcon.style.cursor = "pointer";
+            
+            console.log("address");
+            console.log(bkoimadhk_reverseGeoConfig.default_marker_icon);
 
             marker[type] = new bkoigl.Marker({ draggable: false, element: markerIcon })
                 .setLngLat(lngLat)
@@ -82,10 +87,10 @@ jQuery(function ($) {
         };
 
         // Select the map style or default to 'Light'
-        const selectedMapStyle = mapStyles[bkoimadhk_autocompleteConfig.default_map_style] || mapStyles.Light;
+        const selectedMapStyle = mapStyles[bkoimadhk_reverseGeoConfig.default_map_style] || mapStyles.Light;
 
-        if (bkoimadhk_autocompleteConfig.default_coordinates != '') {
-            centerlngLat = bkoimadhk_autocompleteConfig.default_coordinates.split(',');
+        if (bkoimadhk_reverseGeoConfig.default_coordinates != '') {
+            centerlngLat = bkoimadhk_reverseGeoConfig.default_coordinates.split(',');
         } else {
             getGeoLocationFromBrowser().then((positions) => {
                 console.log(`Positions: ${positions}`);
@@ -102,7 +107,7 @@ jQuery(function ($) {
         maps[type] = new bkoigl.Map({
             container: `${type}-map`,
             center: centerlngLat,
-            zoom: bkoimadhk_autocompleteConfig.default_zoom_level,
+            zoom: bkoimadhk_reverseGeoConfig.default_zoom_level,
             style: selectedMapStyle
         });
 
@@ -149,7 +154,7 @@ jQuery(function ($) {
     }
 
     $(document).ready(function () {
-        if (bkoimadhk_autocompleteConfig.map_switch == "1") {
+        if (bkoimadhk_reverseGeoConfig.map_switch == "1") {
             setTimeout(function () {
                 $('#shipping-fields').append(`
                     <div id="billing-map-container" style="display:none">

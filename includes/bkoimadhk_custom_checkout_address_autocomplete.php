@@ -10,6 +10,8 @@ function bkoimadhk_enqueue_custom_checkout_autocomplete_scripts() {
             filemtime(plugin_dir_path(__FILE__) . '../assets/js/custom-checkout-autocomplete.js'),
             true
         );
+        
+        $default_marker_icon = plugin_dir_url(dirname(__FILE__)) . '/../assets/img/marker.png';
 
         wp_localize_script(
             'bkoimadhk_custom_checkout_autocomplete',
@@ -21,7 +23,7 @@ function bkoimadhk_enqueue_custom_checkout_autocomplete_scripts() {
                 'default_coordinates'=> esc_attr( get_option('bkoimadhk_map_checkout_default_coordinates', '') ),
                 'map_switch'         => esc_attr( get_option('bkoimadhk_map_checkout_map_switcher', '1') ),
                 'autocomplete_switch'=> esc_attr( get_option('bkoimadhk_map_checkout_add_autocomplete', '1') ),
-                'default_marker_icon'=> esc_attr( get_option('bkoimadhk_map_checkout_custom_marker_icon', '') ),
+                'default_marker_icon'=> esc_attr( get_option('bkoimadhk_map_checkout_custom_marker_icon', $default_marker_icon) ),
             )
         );
 

@@ -37,7 +37,7 @@ function bkoimadhk_map_shortcode( $atts ) {
 
     // Default marker icon fallback if none set
     if ( empty( $default_marker_icon ) ) {
-        $default_marker_icon = plugin_dir_url( __FILE__ ) . 'assets/img/marker.png';
+        $default_marker_icon = plugin_dir_url(dirname(__FILE__)) . '/../assets/img/marker.png';
     }
 
     // Map styles array
@@ -56,6 +56,7 @@ function bkoimadhk_map_shortcode( $atts ) {
     // Prepare inline JS
     $inline_script = '
     (function() {
+    console.log('.$default_zoom_level.');
         const apiKey = ' . wp_json_encode( $api_key ) . ';
         const mapId = ' . wp_json_encode( $map_id ) . ';
         const locations = ' . wp_json_encode( $locations ) . ';
